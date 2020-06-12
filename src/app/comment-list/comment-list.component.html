@@ -1,6 +1,5 @@
 <ul>
   <li *ngFor="let comment of comments">
-    <span>{{ comment.userId }}</span>
-    <p>{{ comment.title }}</p>
+    <app-comment [comment]="comment"></app-comment>
   </li>
 </ul>
