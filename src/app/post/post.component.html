@@ -1,0 +1,22 @@
+<div class="container">
+  <span>{{ post.userId }} a ecrit:</span>
+  <p>{{ post.body }}</p>
+
+  <div *ngIf="isPosted">{{ form.controls.newComment.value }}</div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input 
+      type="text" 
+      formControlName="newComment" 
+      placeholder="Repondre au commentaire...">
+  </form>
+
+  <button (click)="addComment()" type="submit">Repondre</button>
+  <button 
+    *ngIf="form.controls.newComment.value" 
+    (click)="deleteComment()">
+    Annuler
+  </button>
+</div>
+
+

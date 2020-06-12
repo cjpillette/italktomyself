@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CommentListComponent } from './comment-list/comment-list.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 const routes: Routes = [
   {
-    path: 'comments', component: CommentListComponent
+    path: 'posts', component: PostListComponent
   },
   {
-    path: '',   redirectTo: '/comments', pathMatch: 'full'
+    path: '',   redirectTo: '/posts', pathMatch: 'full'
   },
   {
-    path: '**', component: CommentListComponent
+    path: '**', component: PostListComponent
   }
 ];
 
