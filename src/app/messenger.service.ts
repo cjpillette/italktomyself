@@ -3,10 +3,12 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { Post } from './types';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService {
+export class MessengerService {
 
   constructor(private http: HttpClient) { }
 
@@ -14,18 +16,21 @@ export class CommentService {
     return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 
-  putComment() {
-    this.http.put('https://jsonplaceholder.typicode.com/posts/1', {
-      method: 'PUT',
+  getComments(postId: number): Observable<{}> {
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+  }
+
+  postPost(post: Post, userId: number) {
+    this.http.post('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
       body: JSON.stringify({
-        id: 1,
-        title: 'foo',
-        body: 'bar',
-        userId: 1
+        body: post.body,
+        userId
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8'
       }
     });
   }
+
 }

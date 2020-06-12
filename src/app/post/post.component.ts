@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
-import { Post } from '../types';
+import { MessengerService } from './../messenger.service';
+import { Comment, Post } from '../types';
 
 @Component({
   selector: 'app-post',
@@ -11,15 +12,17 @@ import { Post } from '../types';
 })
 export class PostComponent implements OnInit {
   @Input() post: Post;
+  comments: Comment[];
   isPosted = false;
 
   form = new FormGroup({
-    newComment: new FormControl('', [Validators.required]),
+    body: new FormControl('', [Validators.required]),
   });
 
-  constructor() { }
+  constructor(private service: MessengerService) { }
 
   ngOnInit() {
+    this.service.getComments(this.post.id).subscribe(data => this.comments = data as Comment[]);
   }
 
   addComment() {
@@ -33,7 +36,7 @@ export class PostComponent implements OnInit {
   }
 
   resetForm() {
-    this.form.controls.newComment.setValue('');
+    this.form.controls.body.setValue('');
   }
 
 }

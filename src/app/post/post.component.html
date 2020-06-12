@@ -1,19 +1,28 @@
 <div class="container">
-  <span>{{ post.userId }} a ecrit:</span>
-  <p>{{ post.body }}</p>
+  <span class="author">{{ post.userId }} a ecrit:</span>
+  <span class="content">{{ post.body }}</span>
 
-  <div *ngIf="isPosted">{{ form.controls.newComment.value }}</div>
+  <div class="comment-container">
+    <ul>
+      <li *ngFor="let comment of comments">
+       <span class="author">{{ comment.email}}</span>
+        <span class="content">{{ comment.body}}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="isPosted">{{ form.controls.body.value }}</div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input 
       type="text" 
-      formControlName="newComment" 
+      formControlName="body" 
       placeholder="Repondre au commentaire...">
   </form>
 
   <button (click)="addComment()" type="submit">Repondre</button>
   <button 
-    *ngIf="form.controls.newComment.value" 
+    *ngIf="form.controls.body.value" 
     (click)="deleteComment()">
     Annuler
   </button>

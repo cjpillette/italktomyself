@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { PostNewComponent } from './post-new/post-new.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { PostListComponent } from './post-list/post-list.component';
     AppComponent,
     PostComponent,
     PostListComponent,
+    PostNewComponent,
   ],
   imports: [
     AppRoutingModule,

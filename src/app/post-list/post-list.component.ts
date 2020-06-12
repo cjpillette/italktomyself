@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { CommentService } from '../comment.service';
+import { MessengerService } from '../messenger.service';
 import { Post } from '../types';
 
 @Component({
@@ -14,7 +14,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   posts: Post;
 
-  constructor(private service: CommentService) { }
+  constructor(private service: MessengerService) { }
 
   ngOnInit() {
     this.subscription = this.service.getPosts().subscribe(data => this.posts = data as Post);

@@ -1,0 +1,9 @@
+<h2>Mon nouveau post</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input 
+    type="text" 
+    formControlName="body" 
+    placeholder="Nouveau post">
+  <button type="submit">POST</button>
+</form>
+
