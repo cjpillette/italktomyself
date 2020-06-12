@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostNewComponent } from './post-new/post-new.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { MessengerFormComponent } from './messenger-form/messenger-form.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { PostNewComponent } from './post-new/post-new.component';
     PostComponent,
     PostListComponent,
     PostNewComponent,
+    CommentListComponent,
+    MessengerFormComponent,
   ],
   imports: [
     AppRoutingModule,

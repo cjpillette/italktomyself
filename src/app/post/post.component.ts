@@ -1,42 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
-import { MessengerService } from './../messenger.service';
+import { Subscription } from 'rxjs';
+
 import { Comment, Post } from '../types';
+import { MessengerService } from './../messenger.service';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
   @Input() post: Post;
   comments: Comment[];
-  isPosted = false;
-
-  form = new FormGroup({
-    body: new FormControl('', [Validators.required]),
-  });
+  subscription: Subscription;
 
   constructor(private service: MessengerService) { }
 
   ngOnInit() {
-    this.service.getComments(this.post.id).subscribe(data => this.comments = data as Comment[]);
+    this.subscription = this.service.getComments(this.post.id).subscribe(data => this.comments = data as Comment[]);
   }
 
-  addComment() {
-    // HTTP post
-    this.isPosted = true;
-  }
-
-  deleteComment() {
-    // HTTP delete
-    this.resetForm();
-  }
-
-  resetForm() {
-    this.form.controls.body.setValue('');
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

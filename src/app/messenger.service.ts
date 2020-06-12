@@ -33,4 +33,17 @@ export class MessengerService {
     });
   }
 
+  postComment(body: string, postId: number) {
+    this.http.post(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`, {
+      method: 'POST',
+      body: JSON.stringify({
+        body,
+        postId
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    });
+  }
+
 }

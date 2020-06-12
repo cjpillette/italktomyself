@@ -2,30 +2,14 @@
   <span class="author">{{ post.userId }} a ecrit:</span>
   <span class="content">{{ post.body }}</span>
 
-  <div class="comment-container">
-    <ul>
-      <li *ngFor="let comment of comments">
-       <span class="author">{{ comment.email}}</span>
-        <span class="content">{{ comment.body}}</span>
-      </li>
-    </ul>
-  </div>
+  <app-comment-list [comments]="comments"></app-comment-list>
 
-  <div *ngIf="isPosted">{{ form.controls.body.value }}</div>
+  <app-messenger-form
+    placeholder="Repondre au commentaire..."
+    messengerType="comment"
+    [post]="post">
+  </app-messenger-form>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input 
-      type="text" 
-      formControlName="body" 
-      placeholder="Repondre au commentaire...">
-  </form>
-
-  <button (click)="addComment()" type="submit">Repondre</button>
-  <button 
-    *ngIf="form.controls.body.value" 
-    (click)="deleteComment()">
-    Annuler
-  </button>
 </div>
 
 

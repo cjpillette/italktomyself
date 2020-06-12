@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
-import { MessengerService } from './../messenger.service';
 
 @Component({
   selector: 'app-post-new',
@@ -10,18 +7,9 @@ import { MessengerService } from './../messenger.service';
 })
 export class PostNewComponent implements OnInit {
 
-  form = new FormGroup({
-    body: new FormControl('', []),
-  });
-
-  constructor(private service: MessengerService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  onSubmit() {
-    // TODO set userID, here 9, as second arg
-    this.service.postPost(this.form.value, 9);
   }
 
 }

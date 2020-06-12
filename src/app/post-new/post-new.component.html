@@ -1,9 +1,7 @@
-<h2>Mon nouveau post</h2>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input 
-    type="text" 
-    formControlName="body" 
-    placeholder="Nouveau post">
-  <button type="submit">POST</button>
-</form>
+<h2>A very pretty page where a nice form below is displayed</h2>
+<h3>Truth to be told, this page needs some serious styling...</h3>
+<app-messenger-form 
+  placeholder="Ajouter un nouveau post"
+  messengerType="post">
+</app-messenger-form>
 

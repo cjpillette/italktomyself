@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input 
+    type="text" 
+    formControlName="body" 
+    [placeholder]="placeholder">
+
+  <button 
+    *ngIf="messengerType === 'post'" 
+    type="submit">POST</button>
+  <button 
+    *ngIf="messengerType === 'comment'"
+    type="submit">REPONDRE</button>
+
+  <button 
+    *ngIf="form.controls.body.value" 
+    (click)="onDelete()">
+    Annuler
+  </button>
+</form>
