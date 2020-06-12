@@ -3,14 +3,14 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Comment, Post } from '../types';
-import { MessengerService } from './../messenger.service';
+import { MessengerService } from '../messenger.service';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'app-post-details',
+  templateUrl: './post-details.component.html',
+  styleUrls: ['./post-details.component.scss']
 })
-export class PostComponent implements OnInit, OnDestroy {
+export class PostDetailsComponent implements OnInit, OnDestroy {
   @Input() post: Post;
   comments: Comment[];
   subscription: Subscription;
